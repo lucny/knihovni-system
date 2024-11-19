@@ -1,0 +1,102 @@
+[
+    {
+        "isbn": "9788025701340",
+        "nazev_knihy": "Muž, který sázel stromy",
+        "autor": "Jean Valjean",
+        "rok_vydani": "2009",
+        "nakladatelstvi": "Knihovna",
+        "zanr": "Beletrie",
+        "pocet_stran": "60",
+        "cena": "150"
+    },
+    {
+        "isbn": "9788025702569",
+        "nazev_knihy": "Společenstvo prstenu",
+        "autor": "J.R.R. Tolkien",
+        "rok_vydani": "2012",
+        "nakladatelstvi": "Argo",
+        "zanr": "Fantasy",
+        "pocet_stran": "423",
+        "cena": "450"
+    },
+    {
+        "isbn": "9788020712342",
+        "nazev_knihy": "Stoletý stařík, který vylezl z okna a zmizel",
+        "autor": "Jonas Jonasson",
+        "rok_vydani": "2015",
+        "nakladatelstvi": "Panteon",
+        "zanr": "Humoristický román",
+        "pocet_stran": "356",
+        "cena": "320"
+    },
+    {
+        "isbn": "9788073310565",
+        "nazev_knihy": "Zpověď",
+        "autor": "Hjalmar Söderberg",
+        "rok_vydani": "2010",
+        "nakladatelstvi": "BB Art",
+        "zanr": "Psychologický román",
+        "pocet_stran": "215",
+        "cena": "280"
+    },
+    {
+        "isbn": "9788020023911",
+        "nazev_knihy": "Osudy dobrého vojáka Švejka",
+        "autor": "Jaroslav Hašek",
+        "rok_vydani": "2010",
+        "nakladatelstvi": "Odeon",
+        "zanr": "Satira",
+        "pocet_stran": "385",
+        "cena": "450"
+    },
+    {
+        "isbn": "9788026013433",
+        "nazev_knihy": "Český sen",
+        "autor": "Martin Mejstřík",
+        "rok_vydani": "2014",
+        "nakladatelstvi": "Host",
+        "zanr": "Reportáž",
+        "pocet_stran": "198",
+        "cena": "270"
+    },
+    {
+        "isbn": "9788072206791",
+        "nazev_knihy": "Na západní frontě klid",
+        "autor": "Erich Maria Remarque",
+        "rok_vydani": "2006",
+        "nakladatelstvi": "Naše vojsko",
+        "zanr": "Válečná literatura",
+        "pocet_stran": "296",
+        "cena": "310"
+    },
+    {
+        "isbn": "9788072037159",
+        "nazev_knihy": "Alchymista",
+        "autor": "Paulo Coelho",
+        "rok_vydani": "2005",
+        "nakladatelstvi": "Argo",
+        "zanr": "Beletrie",
+        "pocet_stran": "172",
+        "cena": "230"
+    },
+    {
+        "isbn": "9788025702599",
+        "nazev_knihy": "Dvě věže",
+        "autor": "J.R.R. Tolkien",
+        "rok_vydani": "2014",
+        "nakladatelstvi": "Argo",
+        "zanr": "Fantasy",
+        "pocet_stran": "441",
+        "cena": "450"
+    },
+    {
+        "isbn": "9788025702339",
+        "nazev_knihy": "Návrat krále",
+        "autor": "J.R.R. Tolkien",
+        "rok_vydani": "2015",
+        "nakladatelstvi": "Argo",
+        "zanr": "Fantasy",
+        "pocet_stran": "564",
+        "cena": "460"
+    }
+]

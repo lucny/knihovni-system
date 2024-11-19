@@ -1,13 +1,16 @@
 import csv
 from tabulate import tabulate
+import json
 import os
 
 class KnihovniSystem:
+    """ Třída pro správu knihovny """
     def __init__(self, soubor):
         self.soubor = soubor
         self.knihy = self.nacti_knihy()
         
     def nacti_knihy(self):
+        """ Načte knihy ze souboru """
         try:
             with open(self.soubor, 'r', encoding='utf-8') as f:
                 return list(csv.DictReader(f))
@@ -16,14 +19,39 @@ class KnihovniSystem:
             return []
 
     def uloz_knihy(self):
+        """ Uloží knihy do souboru """
         if self.knihy:
             fieldnames = self.knihy[0].keys()
-            with open(self.soubor, 'w', encoding='utf-8', newline='') as f:
-                writer = csv.DictWriter(f, fieldnames=fieldnames)
-                writer.writeheader()
-                writer.writerows(self.knihy)
+            try:
+                with open(self.soubor, 'w', encoding='utf-8', newline='') as f:
+                    writer = csv.DictWriter(f, fieldnames=fieldnames)
+                    writer.writeheader()
+                    writer.writerows(self.knihy)
+            except FileNotFoundError:
+                print(f"Soubor {self.soubor} nebyl nalezen.")
+
+    def import_json(self, filename):
+        """ Importuje knihy ze souboru JSON """
+        try:
+            with open(filename, 'r', encoding='utf-8') as f:
+                knihy = json.load(f)
+            self.knihy = knihy
+            self.uloz_knihy()
+            print("Knihy byly úspěšně importovány.")
+        except FileNotFoundError:
+            print(f"Soubor {filename} nebyl nalezen.")
+
+    def export_json(self, filename):
+        """ Exportuje knihy do souboru JSON """
+        try:
+            with open(filename, 'w', encoding='utf-8') as f:
+                json.dump(self.knihy, f, ensure_ascii=False, indent=4)
+            print("Knihy byly úspěšně exportovány.")
+        except FileExistsError:
+            print(f"Soubor {filename} už existuje.")
 
     def zobraz_knihy(self):
+        """ Zobrazí všechny knihy """
         if not self.knihy:
             print("Žádné knihy k zobrazení.")
             return
@@ -43,6 +71,7 @@ class KnihovniSystem:
         print(tabulate(table_data, headers=headers.values(), tablefmt='grid'))
 
     def filtruj_knihy(self):
+        """ Filtrování knih podle zadaných kritérií """
         print("\n=== FILTRACE KNIH ===")
         print("1. Podle žánru")
         print("2. Podle počtu stran")
@@ -78,6 +107,7 @@ class KnihovniSystem:
             print("Nebyly nalezeny žádné knihy odpovídající filtru.")
 
     def pridej_knihu(self):
+        """ Přidání nové knihy """
         print("\n=== PŘIDÁNÍ NOVÉ KNIHY ===")
         nova_kniha = {
             'isbn': input("ISBN: "),
@@ -94,6 +124,7 @@ class KnihovniSystem:
         print("Kniha byla úspěšně přidána.")
 
     def uprav_knihu(self):
+        """ Úprava existující knihy """
         self.zobraz_knihy()
         isbn = input("\nZadejte ISBN knihy k úpravě: ")
         
@@ -110,6 +141,7 @@ class KnihovniSystem:
         print("Kniha s tímto ISBN nebyla nalezena.")
 
     def smaz_knihu(self):
+        """ Smazání existující knihy """
         self.zobraz_knihy()
         isbn = input("\nZadejte ISBN knihy ke smazání: ")
         
@@ -121,7 +153,9 @@ class KnihovniSystem:
                 return
         print("Kniha s tímto ISBN nebyla nalezena.")
 
+
 def hlavni_menu():
+    """ Hlavní menu programu """
     system = KnihovniSystem('knihy.csv')
     
     while True:
@@ -131,9 +165,11 @@ def hlavni_menu():
         print("3. Přidat novou knihu")
         print("4. Upravit knihu")
         print("5. Smazat knihu")
-        print("6. Konec")
+        print("6. Importovat knihy ze souboru JSON")
+        print("7. Exportovat knihy do souboru JSON")
+        print("0. Konec")
         
-        volba = input("\nVyberte možnost (1-6): ")
+        volba = input("\nVyberte možnost (0-7): ")
         
         if volba == '1':
             system.zobraz_knihy()
@@ -146,6 +182,12 @@ def hlavni_menu():
         elif volba == '5':
             system.smaz_knihu()
         elif volba == '6':
+            print("Importovat knihy ze souboru JSON - zadejte název souboru:")
+            system.import_json(input())
+        elif volba == '7':
+            print("Exportovat knihy do souboru JSON - zadejte název souboru:")
+            system.export_json(input())
+        elif volba == '0':
             print("Program ukončen.")
             break
         else:
